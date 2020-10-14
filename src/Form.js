@@ -31,6 +31,7 @@ export default function Form(props) {
             <Errors>
                 <div>{errors.name}</div>
                 <div>{errors.email}</div>
+                <div>{errors.role}</div>
                 <div>{errors.password}</div>
                 <div>{errors.agree}</div>
             </Errors>
@@ -53,6 +54,16 @@ export default function Form(props) {
                 value={values.email}
                 onChange={onChange}
                 />
+            </label>
+            <label>
+                Role
+                <select onChange={onChange} value={values.role} name="role">
+                    <option value="">---Select an role---</option>
+                    <option value="student">Student</option>
+                    <option value="alumni">Alumni</option>
+                    <option value="instructor">Instructor</option>
+                    <option value="tl">Team Lead</option>
+                </select>
             </label>
             <label>
                 Password

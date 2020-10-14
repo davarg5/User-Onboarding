@@ -20,6 +20,7 @@ function App() {
   const formSchema = yup.object().shape({
     name: yup.string().required('Name is required'),
     email: yup.string().email('Must be a valid email address').required('Must include an email address'),
+    role: yup.string().oneOf(['student', 'instructor', 'tl', 'alumni'], 'role is required'),
     password: yup.string().required('Password is required').min(8, 'Password must be at least 8 characters'),
     agree: yup.boolean().oneOf([true], 'You must accept the terms of service')
   })
@@ -27,6 +28,7 @@ function App() {
   const initialFormErrors = {
     name: '',
     email: '',
+    role: '',
     password: '',
     agree: ''
   }
@@ -34,6 +36,7 @@ function App() {
   const initialFormValues = {
     name: '',
     email: '',
+    role: '',
     password: '',
     agree: false
   }
@@ -70,6 +73,7 @@ function App() {
     const newUser = {
       name: formValues.name.trim(),
       email: formValues.email.trim(),
+      role: formValues.role.trim(),
       password: formValues.password.trim(),
       agree: formValues.agree
     }
@@ -113,6 +117,7 @@ function App() {
       <Container>
       <h2>{user.name}</h2>
       <p>Email: {user.email}</p>
+      <p>Role: {user.role}</p>
       </Container>
       )
     })}
