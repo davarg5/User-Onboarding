@@ -110,9 +110,10 @@ function App() {
     </Container>
     {users.map(user => {
       return (
-        <div>
-          Hello
-        </div>
+      <Container>
+      <h2>{user.name}</h2>
+      <p>Email: {user.email}</p>
+      </Container>
       )
     })}
     </div>

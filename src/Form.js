@@ -6,6 +6,12 @@ const Inputs = styled.div`
     flex-direction: column;
 `
 
+const Errors = styled.div`
+    font-size: 0.7em;
+    color: red;
+`
+
+
 export default function Form(props) {
     const {values, change, submit, disabled, errors} = props;
 
@@ -21,6 +27,13 @@ export default function Form(props) {
     }
 
     return (
+        <div>
+            <Errors>
+                <div>{errors.name}</div>
+                <div>{errors.email}</div>
+                <div>{errors.password}</div>
+                <div>{errors.agree}</div>
+            </Errors>
         <form onSubmit={onSubmit}>
             <Inputs>
             <label>
@@ -62,6 +75,7 @@ export default function Form(props) {
             <button disabled={disabled}>Submit</button>
             </Inputs>
         </form>
+        </div>
 
     )
 }
