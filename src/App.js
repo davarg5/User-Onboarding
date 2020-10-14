@@ -34,7 +34,7 @@ function App() {
   }
 
   const submit = () => {
-    
+
   }
 
   const Container = styled.div`
@@ -50,7 +50,13 @@ function App() {
   return (
     <Container>
       <h1>User Onboarding</h1>
-      <Form />
+      <Form 
+      values={formValues}
+      change={change}
+      submit={submit}
+      disabled={disabled}
+      errors={formErrors}
+      />
     </Container>
   );
 }
