@@ -8,6 +8,9 @@ describe('User-Onboarding App', () => {
     const nameInput = () => cy.get('input[name="name"]')
     const emailInput = () => cy.get('input[name="email"]')
     const passwordInput = () => cy.get('input[name="password"]')
+    const termsCheckbox = () => cy.get('input[name="agree"]')
+    const submitBtn = () => cy.get('button')
+    const roleInput = () => cy.get('select[name="role"]')
 
     it('types a name in the name input', () => {
         nameInput()
@@ -28,6 +31,38 @@ describe('User-Onboarding App', () => {
             .should('exist')
             .type('pass1234')
             .should('have.value', 'pass1234')
+    })
+
+    it('checks to see if a user can check the terms of service', () => {
+        termsCheckbox()
+            .should('exist')
+            .should('not.be.checked')
+            .click()
+            .should('be.checked')
+    })
+
+    it('checks to see if a user can submit the form data', () => {
+        nameInput()
+            .type('Daniel')
+        emailInput()
+            .type('davarg5@yahoo.com')
+        passwordInput()
+            .type('davarg16')
+        termsCheckbox()
+            .click()
+        roleInput()
+            .select('student')
+        submitBtn()
+            .should('not.be.disabled')
+            .click()
+    })
+
+    it('checks for form validation', () => {
+        nameInput()
+            .type('Daniel')
+        submitBtn()
+            .should('be.disabled')
+
     })
 
 })
